@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sarvasva</groupId>
-	<artifactId>book-app</artifactId>
+	<artifactId>spring-book-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>book-app</name>
-	<description>Demo project for Spring Boot</description>
+	<name>spring-book-app</name>
+	<description>Spring Book App using JPA,H2, ThymeLeaf</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -21,7 +21,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -38,11 +42,6 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-    		<groupId>org.springframework.boot</groupId>
-   			 <artifactId>spring-boot-starter-actuator</artifactId>
-    		<version>2.3.0.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -1,14 +1,13 @@
-package com.sarvasva.bookapp;
+package com.sarvasva.springbookapp;
 
 import org.springframework.boot.SpringApplication;
-import javax.persistence.Id;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-@Entity
+
 @SpringBootApplication
-public class BookAppApplication {
+public class SpringBookAppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BookAppApplication.class, args);
+		SpringApplication.run(SpringBookAppApplication.class, args);
 	}
 
 }
