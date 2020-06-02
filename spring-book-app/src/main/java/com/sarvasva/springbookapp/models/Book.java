@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Book {
@@ -17,7 +18,10 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	long id;
 	String name;
-	String publisherName;
+	
+	@OneToOne
+	Publisher publisher;
+	
 	
 	@ManyToMany
 	@JoinTable(
@@ -27,35 +31,50 @@ public class Book {
 	Set<Author> authors=new HashSet<Author>();
 	
 	
-	public Book(String name, String publisherName) {
+	public Book() {
+		
+	}
+
+	public Book(String name, Publisher publisher) {
 		
 		this.name = name;
-		this.publisherName = publisherName;
+		this.publisher = publisher;
 	}
+	
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPublisherName() {
-		return publisherName;
+
+	public Publisher getPublisher() {
+		return publisher;
 	}
-	public void setPublisherName(String publisherName) {
-		this.publisherName = publisherName;
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
 	}
+
 	public Set<Author> getAuthors() {
 		return authors;
 	}
+
 	public void setAuthors(Set<Author> authors) {
 		this.authors = authors;
 	}
+
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -76,10 +95,12 @@ public class Book {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", name=" + name + ", publisherName=" + publisherName + ", authors=" + authors + "]";
+		return "Book [id=" + id + ", name=" + name + ", publisher=" + publisher + ", authors=" + authors + "]";
 	}
+	
 	
 	
 
