@@ -3,11 +3,27 @@ package com.sarvasva.springbookapp.models;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
+@Entity
 public class Author {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	Long id;
+	
 	String name;
+	@ManyToMany(mappedBy = "authors")
 	Set<Book> books=new HashSet<Book>();
+	
+	
+	public Author(String name) {
+		
+		this.name = name;
+	}
 	public Long getId() {
 		return id;
 	}

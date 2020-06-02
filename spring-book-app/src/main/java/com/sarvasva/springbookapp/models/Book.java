@@ -3,11 +3,35 @@ package com.sarvasva.springbookapp.models;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+@Entity
 public class Book {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	long id;
 	String name;
 	String publisherName;
+	
+	@ManyToMany
+	@JoinTable(
+			name="book_author",
+			joinColumns=@JoinColumn(name="book_id"),
+			inverseJoinColumns=@JoinColumn(name="author_id"))
 	Set<Author> authors=new HashSet<Author>();
+	
+	
+	public Book(String name, String publisherName) {
+		
+		this.name = name;
+		this.publisherName = publisherName;
+	}
 	public long getId() {
 		return id;
 	}
@@ -51,6 +75,10 @@ public class Book {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", name=" + name + ", publisherName=" + publisherName + ", authors=" + authors + "]";
 	}
 	
 	
